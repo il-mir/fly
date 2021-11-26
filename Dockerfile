@@ -21,3 +21,6 @@ RUN wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/${FLYWAY
   && rm flyway-commandline-${FLYWAY_VERSION}.tar.gz
 
 COPY --from=golang_build /src/gitdiff2fly /opt/app/
+
+#copy repository
+COPY /home/uzur/fly /opt/fly
