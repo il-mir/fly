@@ -22,6 +22,5 @@ RUN wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/${FLYWAY
 
 COPY --from=golang_build /src/gitdiff2fly /opt/app/
 
-#copy repository
-RUN cd /home/uzur/
-COPY ./fly /opt/fly
+#clone repository
+RUN cd /opt; git clone https://github.com/il-mir/fly.git
