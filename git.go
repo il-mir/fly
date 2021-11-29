@@ -120,5 +120,5 @@ func (git Git) makeRelease(flyRepoPath, verPath, version, curr string) {
 	git.doGit(flyRepoPath, "commit", "-m", "version "+version)
 	git.doGit(flyRepoPath, "tag", "changeset_"+curr)
 	git.doGit(flyRepoPath, "tag", "v"+version)
-	git.doGit(flyRepoPath, "push", "--tags", "origin", "master")
+	git.doGit(flyRepoPath, "push", "--tags", "origin", "main")
 }
