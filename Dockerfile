@@ -5,7 +5,7 @@ RUN cd /src/; go build .
 
 # Flyway
 FROM bellsoft/liberica-openjdk-alpine-musl:11.0.11-9 as flyway_build
-RUN apk --no-cache add --update bash openssl git
+RUN apk --no-cache add --update bash openssl git openssh
 
 # Add the flyway user and step in the directory
 RUN addgroup flyway \
@@ -22,5 +22,14 @@ RUN wget https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/${FLYWAY
 
 COPY --from=golang_build /src/gitdiff2fly /opt/app/
 
+COPY id_ed25519 /root/.ssh/id_ed25519
+COPY known_hosts /root/.ssh/known_hosts
+
+
 #clone repository
-RUN cd /opt; git clone https://github.com/il-mir/fly.git
+RUN cd /opt \
+    && git config --global user.email "teamcity@example.com" \
+    && git config --global user.name "TeamCity" \
+    && git clone git@github.com:il-mir/fly.git \
+    && git clone git@github.com:il-mir/fly_releases.git
+    
