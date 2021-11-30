@@ -31,5 +31,5 @@ RUN cd /opt \
     && git config --global user.email "teamcity@example.com" \
     && git config --global user.name "TeamCity" \
     && git clone git@github.com:il-mir/fly.git \
-    && git clone git@github.com:il-mir/fly_releases.git
-    
+    && git clone git@github.com:il-mir/fly_releases.git 
+    #&& /opt/app/gitdiff2fly -flyway-repo-path /opt/fly_releases/ -next-version 1
